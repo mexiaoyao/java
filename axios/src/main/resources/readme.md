@@ -1,3 +1,5 @@
+参考地址：
+https://space.bilibili.com/380474484
 1:创建实体类；
 在Idea首页依次打开 File - Settings - Plugins
 <!--lombok @Data-->
