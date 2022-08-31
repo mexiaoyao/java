@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-    UserMapper userMapper;
-
     @Override
     public Page<User> pageListUser(Integer current, Integer limit, User user){
         //创建Page对象
