@@ -1,5 +1,6 @@
 package com.youlianmei.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.youlianmei.model.User;
 import com.youlianmei.service.UserService;
 import org.springframework.ui.ModelMap;
@@ -49,6 +50,20 @@ public class IndexController {
         Boolean ret = userService.save(user);
         result.put("code",1000);
         result.put("ret",ret);
+        return result;
+    }
+
+    @GetMapping("listPage")
+    public Object listPage(HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+        Map<String,Object> result = new HashMap<>();
+        User user = new User();
+        user.setName("11");
+        user.setAge(15);
+        Page<User> ret = userService.getBaseMapper().selectPage(new Page<>(1, 2),null);
+        result.put("code",1000);
+        result.put("current",ret.getCurrent());
+        result.put("list",ret.getRecords());
+        result.put("total",ret.getTotal());
         return result;
     }
 }
