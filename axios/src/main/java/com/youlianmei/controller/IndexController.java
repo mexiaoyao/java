@@ -3,10 +3,9 @@ package com.youlianmei.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.youlianmei.model.User;
 import com.youlianmei.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -54,12 +53,13 @@ public class IndexController {
     }
 
     @GetMapping("listPage")
-    public Object listPage(HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+    public Object listPage(
+            @RequestParam("current") Integer current,       //当前页
+            @RequestParam("limit") Integer limit,           //要查询记录数
+            User user                                       //查询条件封装的对象
+    ) throws Exception {
         Map<String,Object> result = new HashMap<>();
-        User user = new User();
-        user.setName("11");
-        user.setAge(15);
-        Page<User> ret = userService.getBaseMapper().selectPage(new Page<>(1, 2),null);
+        Page<User> ret = userService.pageListUser(current, limit,user);
         result.put("code",1000);
         result.put("current",ret.getCurrent());
         result.put("list",ret.getRecords());
