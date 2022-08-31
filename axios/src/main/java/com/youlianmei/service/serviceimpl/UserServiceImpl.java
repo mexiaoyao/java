@@ -8,12 +8,14 @@ import com.youlianmei.model.User;
 import com.youlianmei.service.UserService;
 import com.youlianmei.utils.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Override
+    @Transactional(rollbackFor = Exception.class) //一般编辑，添加，删除（即对数据库进行操作）时用到，此处只是展示案例
     public Page<User> pageListUser(Integer current, Integer limit, User user){
         //创建Page对象
         Page<User> eduTeacherPage = new Page<>(current,limit);

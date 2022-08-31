@@ -89,3 +89,5 @@ http://localhost:8080/springmvc/hello/101?param1=10&param2=20
     @RequestParam(value="param2", required=false) String param2){
 .......
 }
+
+//@Transactional事务 当出错时，会回滚

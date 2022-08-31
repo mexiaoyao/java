@@ -3,6 +3,7 @@ package com.youlianmei.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.youlianmei.model.User;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
