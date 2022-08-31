@@ -59,7 +59,7 @@ public class IndexController {
             User user                                       //查询条件封装的对象
     ) throws Exception {
         Map<String,Object> result = new HashMap<>();
-        Page<User> ret = userService.pageListUser(current, limit,user);
+        Page<User> ret = userService.pageListUser(current, limit, user);
         result.put("code",1000);
         result.put("current",ret.getCurrent());
         result.put("list",ret.getRecords());
