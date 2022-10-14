@@ -1,18 +1,16 @@
 package com.youlianmei.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.youlianmei.dao.FinanceIntroDao;
 import com.youlianmei.model.FinanceIntro;
-import com.youlianmei.model.User;
 import com.youlianmei.service.FinanceIntroService;
-import com.youlianmei.service.UserService;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController //@RestController相当于@Controller和@ResponseBody合在一起的作用；
@@ -24,15 +22,13 @@ public class FinanceController {
 
 
     @PostMapping("list")
-    public Object list(HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
-        Map<String,Object> result = new HashMap<>();
-        /*User user = new User();
-        user.setName("11");*/
-        List<FinanceIntro> list = financeIntroService.list();
-        result.put("code",1000);
-        result.put("list",list);
-        result.put("total",1000);
-        result.put("page",1);
-        return result;
+    public Object list(FinanceIntroDao financeIntro, @RequestParam(value = "page", defaultValue = "1") Integer page, @RequestParam(value = "limit", defaultValue = "10") Integer limit) throws Exception {
+        Map<String,Object> obj = new HashMap<>();
+        Page<FinanceIntro> result = financeIntroService.pageList(financeIntro,page,limit);
+        obj.put("code","10000");
+        obj.put("list",result.getRecords());
+        obj.put("total",result.getTotal());
+        obj.put("page",result.getCurrent());
+        return obj;
     }
 }
