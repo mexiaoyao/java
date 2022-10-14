@@ -7,6 +7,6 @@ import com.youlianmei.model.FinanceIntro;
 
 public interface FinanceIntroService extends IService<FinanceIntro> {
 
-    Page<FinanceIntro> pageList(FinanceIntroDao financeIntro, Integer page, Integer limit);
+    Page<FinanceIntro> pageList(FinanceIntroDao financeIntro, Integer pageNo, Integer pageSize);
 
 }

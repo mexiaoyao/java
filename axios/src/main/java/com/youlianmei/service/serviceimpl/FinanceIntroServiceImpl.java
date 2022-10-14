@@ -17,66 +17,66 @@ public class FinanceIntroServiceImpl extends ServiceImpl<FinanceIntroMapper, Fin
 
     @Override
     @Transactional(rollbackFor = Exception.class) //一般编辑，添加，删除（即对数据库进行操作）时用到，此处只是展示案例
-    public Page<FinanceIntro> pageList(FinanceIntroDao financeIntro, Integer page, Integer limit){
+    public Page<FinanceIntro> pageList(FinanceIntroDao financeIntro, Integer pageNo, Integer pageSize){
         //创建Page对象
-        Page<FinanceIntro> eduTeacherPage = new Page<>(page,limit);
+        Page<FinanceIntro> eduTeacherPage = new Page<>(pageNo,pageSize);
         //构建条件
         QueryWrapper<FinanceIntro> wrapper = new QueryWrapper<>();
         //多条件组合查询
         if (null!=financeIntro.getIndexType() && financeIntro.getIndexType().intValue()!=0){
-            wrapper.eq("indexType",financeIntro.getIndexType());
+            wrapper.eq("index_type",financeIntro.getIndexType());
         }
         if (!StringUtils.isEmpty(financeIntro.getCodeNumber())){
-            wrapper.like("codeNumber",financeIntro.getCodeNumber());
+            wrapper.like("code_number",financeIntro.getCodeNumber());
         }
         if (!StringUtils.isEmpty(financeIntro.getSharesName())){
-            wrapper.like("sharesName",financeIntro.getSharesName());
+            wrapper.like("shares_name",financeIntro.getSharesName());
         }
         if (!StringUtils.isEmpty(financeIntro.getSharesAlise())){
-            wrapper.like("sharesAlise",financeIntro.getSharesAlise());
+            wrapper.like("shares_alise",financeIntro.getSharesAlise());
         }
         if (null!=financeIntro.getSharesTotalNumberStart()){
             //大于等于
-            wrapper.ge("sharesTotalNumber",financeIntro.getSharesTotalNumberStart());
+            wrapper.ge("shares_total_number",financeIntro.getSharesTotalNumberStart());
         }
         if (null!=financeIntro.getSharesTotalNumberStart()){
             //小于等于
-            wrapper.le("sharesTotalNumber",financeIntro.getSharesTotalNumberStart());
+            wrapper.le("shares_total_number",financeIntro.getSharesTotalNumberStart());
         }
         if (null!=financeIntro.getSharesTotalNumberStart()){
             //大于等于
-            wrapper.ge("sharesAllowTotalNumber",financeIntro.getSharesTotalNumberStart());
+            wrapper.ge("shares_allow_total_number",financeIntro.getSharesTotalNumberStart());
         }
         if (null!=financeIntro.getSharesAllowTotalNumberEnd()){
             //小于等于
-            wrapper.le("sharesAllowTotalNumber",financeIntro.getSharesAllowTotalNumberEnd());
+            wrapper.le("shares_allow_total_number",financeIntro.getSharesAllowTotalNumberEnd());
         }
         if (null!=financeIntro.getStatus() && financeIntro.getStatus().intValue()!=0){
             wrapper.eq("status",financeIntro.getStatus());
         }
         if (null!=financeIntro.getLoadTimeStart()){
             //大于等于
-            wrapper.ge("loadTime",financeIntro.getLoadTimeStart());
+            wrapper.ge("load_time",financeIntro.getLoadTimeStart());
         }
         if (null!=financeIntro.getLoadTimeEnd()){
             //小于等于
-            wrapper.le("loadTime",financeIntro.getLoadTimeEnd());
+            wrapper.le("load_time",financeIntro.getLoadTimeEnd());
         }
         if (null!=financeIntro.getCreateTimeStart()){
             //大于等于
-            wrapper.ge("createTime",financeIntro.getCreateTimeStart());
+            wrapper.ge("create_time",financeIntro.getCreateTimeStart());
         }
         if (null!=financeIntro.getCreateTimeEnd()){
             //小于等于
-            wrapper.le("createTime",financeIntro.getCreateTimeEnd());
+            wrapper.le("create_time",financeIntro.getCreateTimeEnd());
         }
         if (null!=financeIntro.getUpdateTimeStart()){
             //大于等于
-            wrapper.ge("updateTime",financeIntro.getUpdateTimeStart());
+            wrapper.ge("update_time",financeIntro.getUpdateTimeStart());
         }
         if (null!=financeIntro.getUpdateTimeEnd()){
             //小于等于
-            wrapper.le("updateTime",financeIntro.getUpdateTimeEnd());
+            wrapper.le("update_time",financeIntro.getUpdateTimeEnd());
         }
         if (!StringUtils.isEmpty(financeIntro.getRemarks())){
             wrapper.like("remarks",financeIntro.getRemarks());
