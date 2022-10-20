@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor //有参构造器
 @NoArgsConstructor //无参构造器
 @TableName(value = "t_finance_intro")//指定表名
-public class FinanceIntro {
+public class FinanceIntro{
 
     @TableId(type = IdType.ASSIGN_UUID)
     private String id;

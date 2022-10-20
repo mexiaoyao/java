@@ -18,9 +18,9 @@ public class FinanceController {
     FinanceIntroService financeIntroService;
 
     @PostMapping("list")
-    public Object list(@RequestBody FinanceIntroDao financeIntro, @RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize) throws Exception {
+    public Object list(@RequestBody FinanceIntroDao financeIntro) throws Exception {
         Map<String,Object> obj = new HashMap<>();
-        Page<FinanceIntro> result = financeIntroService.pageList(financeIntro,pageNo,pageSize);
+        Page<FinanceIntro> result = financeIntroService.pageList(financeIntro);
         obj.put("code","10000");
         obj.put("list",result.getRecords());
         obj.put("total",result.getTotal());

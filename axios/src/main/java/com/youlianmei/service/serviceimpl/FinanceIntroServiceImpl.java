@@ -17,7 +17,9 @@ public class FinanceIntroServiceImpl extends ServiceImpl<FinanceIntroMapper, Fin
 
     @Override
     @Transactional(rollbackFor = Exception.class) //一般编辑，添加，删除（即对数据库进行操作）时用到，此处只是展示案例
-    public Page<FinanceIntro> pageList(FinanceIntroDao financeIntro, Integer pageNo, Integer pageSize){
+    public Page<FinanceIntro> pageList(FinanceIntroDao financeIntro){
+        Integer pageNo = null==financeIntro.getPageNo() ? 1 : financeIntro.getPageNo();
+        Integer pageSize = null==financeIntro.getPageSize() ? 10 : financeIntro.getPageSize();
         //创建Page对象
         Page<FinanceIntro> eduTeacherPage = new Page<>(pageNo,pageSize);
         //构建条件
