@@ -9,4 +9,10 @@ public interface FinanceIntroService extends IService<FinanceIntro> {
 
     Page<FinanceIntro> pageList(FinanceIntroDao financeIntro);
 
+    Integer financeStatus(String id, Byte status);
+
+    Integer financeDelete(String id);
+
+    Integer actionFinance(FinanceIntroDao financeIntro);
+
 }

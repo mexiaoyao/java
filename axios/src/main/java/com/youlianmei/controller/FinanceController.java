@@ -17,6 +17,9 @@ public class FinanceController {
     @Resource
     FinanceIntroService financeIntroService;
 
+    /**
+     * 股票列表
+     * **/
     @PostMapping("list")
     public Object list(@RequestBody FinanceIntroDao financeIntro) throws Exception {
         Map<String,Object> obj = new HashMap<>();
@@ -27,4 +30,47 @@ public class FinanceController {
         obj.put("page",result.getCurrent());
         return obj;
     }
+
+    /**
+     * 上下架
+     * **/
+    @PostMapping("status")
+    public Object status(@RequestBody FinanceIntroDao financeIntro) throws Exception {
+        Map<String,Object> obj = new HashMap<>();
+        if(null==financeIntro.getId() || null==financeIntro.getStatus()){
+            obj.put("code", 0);
+            return obj;
+        }
+        Integer result = financeIntroService.financeStatus(financeIntro.getId(),financeIntro.getStatus());
+        obj.put("code", result == 1 ? 10000 : 0);
+        return obj;
+    }
+
+    /**
+     * 删除
+     * **/
+    @PostMapping("delete")
+    public Object delete(@RequestBody FinanceIntroDao financeIntro) throws Exception {
+        Map<String,Object> obj = new HashMap<>();
+        if(null==financeIntro.getId()){
+            obj.put("code", 0);
+            return obj;
+        }
+        Integer result = financeIntroService.financeDelete(financeIntro.getId());
+        obj.put("code", result == 1 ? 10000 : 0);
+        return obj;
+    }
+
+    /**
+     * 新增/编辑
+     * **/
+    @PostMapping("actionFinance")
+    public Object actionFinance(@RequestBody FinanceIntroDao financeIntro) throws Exception {
+        Map<String,Object> obj = new HashMap<>();
+        Integer result = financeIntroService.actionFinance(financeIntro);
+        obj.put("code", result == 1 ? 10000 : 0);
+        return obj;
+    }
+
+
 }
