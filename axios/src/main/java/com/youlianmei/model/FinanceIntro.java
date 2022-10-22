@@ -36,7 +36,7 @@ public class FinanceIntro{
      * <p>{@link DateTimeFormat}：接收页面传来的时间字符串并转为{@link Date}
      * <p>{@link JsonFormat}：{@link Date}转为{@link String}返回页面
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd",iso = DateTimeFormat.ISO.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date loadTime;
 
@@ -53,7 +53,7 @@ public class FinanceIntro{
      * <p>{@link DateTimeFormat}：接收页面传来的时间字符串并转为{@link Date}
      * <p>{@link JsonFormat}：{@link Date}转为{@link String}返回页面
      */
-    //@TableField(fill = FieldFill.INSERT_UPDATE)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
