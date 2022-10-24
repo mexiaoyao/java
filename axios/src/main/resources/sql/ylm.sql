@@ -27,4 +27,21 @@ CREATE TABLE `t_finance_intro`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
+
+-- ----------------------------
+-- Table structure for t_finance_update
+-- des 股票更新表
+-- ----------------------------
+DROP TABLE IF EXISTS `t_finance_update`;
+CREATE TABLE `t_finance_update`  (
+  `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'uuid32位',
+  `shares_id` varchar(32) NOT NULL COMMENT '股票ID-对应t_finance_intro的id',
+  `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态[1:成功,2:失败]',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
+  `fail_num` int(2) UNSIGNED ZEROFILL NOT NULL COMMENT '失败次数',
+  `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '备注',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+
 SET FOREIGN_KEY_CHECKS = 1;
