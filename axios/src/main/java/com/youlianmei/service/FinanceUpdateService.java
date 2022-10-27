@@ -13,4 +13,6 @@ public interface FinanceUpdateService extends IService<FinanceUpdate> {
 
     Integer addFinanceUpdate(FinanceUpdateDao financeUpdate);
 
+    Integer getAgain(FinanceUpdateDao financeUpdate);
+
 }

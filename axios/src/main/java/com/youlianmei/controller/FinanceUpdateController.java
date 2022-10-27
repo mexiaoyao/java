@@ -63,5 +63,20 @@ public class FinanceUpdateController {
         return obj;
     }
 
+    /**
+     * 数据重新获取，上线后 需删除此接口
+     * **/
+    @PostMapping("getAgain")
+    public Object getAgain(@RequestBody FinanceUpdateDao financeUpdateDao) throws Exception {
+        Map<String,Object> obj = new HashMap<>();
+        if(null==financeUpdateDao.getId()){
+            obj.put("code", 0);
+            return obj;
+        }
+        Integer result = financeUpdateService.getAgain(financeUpdateDao);
+        obj.put("code", result == 1 ? 10000 : 0);
+        return obj;
+    }
+
 
 }

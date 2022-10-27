@@ -145,4 +145,9 @@ public class FinanceIntroServiceImpl extends ServiceImpl<FinanceIntroMapper, Fin
         return null==insert.getId() ? baseMapper.insert(insert) : baseMapper.updateById(insert);
     }
 
+    @Override
+    public FinanceIntro financeById(String id){
+        return baseMapper.selectById(id);
+    }
+
 }

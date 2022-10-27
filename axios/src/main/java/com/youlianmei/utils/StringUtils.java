@@ -496,6 +496,7 @@ public class StringUtils {
             return null;
         }
     }
+
     public static void main(String[] a){
         String escapeXML = escapeXML("\\");
         System.out.println(escapeXML);

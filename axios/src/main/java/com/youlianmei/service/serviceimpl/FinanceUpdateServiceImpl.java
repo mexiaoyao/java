@@ -7,6 +7,7 @@ import com.youlianmei.dao.FinanceUpdateDao;
 import com.youlianmei.mapper.FinanceUpdateMapper;
 import com.youlianmei.model.FinanceUpdate;
 import com.youlianmei.service.FinanceUpdateService;
+import com.youlianmei.utils.ConstantsUtils;
 import com.youlianmei.utils.DateUtils;
 import com.youlianmei.utils.StringUtils;
 import org.springframework.stereotype.Service;
@@ -71,6 +72,41 @@ public class FinanceUpdateServiceImpl extends ServiceImpl<FinanceUpdateMapper, F
             insert.setRemarks(financeUpdate.getRemarks());
         }
         return baseMapper.insert(insert);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Integer getAgain(FinanceUpdateDao financeUpdate){
+
+        if( StringUtils.isEmpty(financeUpdate.getId()) ){
+            return 0;
+        }
+
+        FinanceUpdate where = new FinanceUpdate();
+        where.setId(financeUpdate.getId());
+
+        FinanceUpdate ret = baseMapper.selectById(financeUpdate.getId());
+        if(null==ret){
+            return 0;
+        }
+        if(ret.getStatus()==1){
+            return 1;
+        }
+
+        /**
+         * 执行股票数据重新获取 ###########################
+         * **/
+        Boolean isAgain = false;
+
+        if(isAgain){
+            where.setStatus(ConstantsUtils.BYTE_1);
+            where.setRemarks("-");
+        }else{
+            where.setStatus(ConstantsUtils.BYTE_2);
+            where.setRemarks("执行失败");
+            where.setFailNum(ret.getFailNum() + 1);
+        }
+        return baseMapper.updateById(where);
     }
 
 

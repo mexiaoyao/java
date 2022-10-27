@@ -4,7 +4,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.youlianmei.dao.FinanceIntroDao;
 import com.youlianmei.model.FinanceIntro;
 import com.youlianmei.service.FinanceIntroService;
-import org.springframework.web.bind.annotation.*;
+import com.youlianmei.service.SharesService;
+import com.youlianmei.utils.ConstantsUtils;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -16,6 +21,9 @@ public class FinanceController {
 
     @Resource
     FinanceIntroService financeIntroService;
+
+    @Resource
+    SharesService sharesService;
 
     /**
      * 股票列表
@@ -40,6 +48,14 @@ public class FinanceController {
         if(null==financeIntro.getId() || null==financeIntro.getStatus()){
             obj.put("code", 0);
             return obj;
+        }
+
+        FinanceIntro statusret = financeIntroService.financeById(financeIntro.getId());
+        String tableName = ConstantsUtils.SHARES_TABLENAME_PRFIX + statusret.getCodeNumber() + "_" + ConstantsUtils.indexTypeLetter(statusret.getIndexType());
+
+        sharesService.delateTable(tableName); //删除表
+        if( financeIntro.getStatus()==1 ){
+            sharesService.createTable(tableName);//上架，建表
         }
         Integer result = financeIntroService.financeStatus(financeIntro.getId(),financeIntro.getStatus());
         obj.put("code", result == 1 ? 10000 : 0);

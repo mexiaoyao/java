@@ -15,4 +15,6 @@ public interface FinanceIntroService extends IService<FinanceIntro> {
 
     Integer actionFinance(FinanceIntroDao financeIntro);
 
+    FinanceIntro financeById(String id);
+
 }
