@@ -18,6 +18,8 @@
           `shares_total_number` bigint(11) NULL DEFAULT NULL COMMENT '股票总数',
           `shares_allow_total_number` bigint(11) NULL DEFAULT NULL COMMENT '可流动股票总数',
           `deal_shares_number` bigint(11) NULL DEFAULT NULL COMMENT '成交的股票数',
+          `amplitude` double(6, 2) NULL DEFAULT NULL COMMENT '股票振幅',
+          `turnover_rate` double(6, 2) NULL DEFAULT NULL COMMENT '股票换手率',
           `shares_date` date NULL DEFAULT NULL COMMENT '记录时间',
           `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
           `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',

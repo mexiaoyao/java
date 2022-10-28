@@ -47,6 +47,8 @@ CREATE TABLE `t_finance_update`  (
 -- ----------------------------
 -- Table structure for t_shares_000000_sh
 -- des 股票记录表
+---股票振幅 股票振幅就是股票开盘后的当日最高价和最低价之间的差的绝对值与昨日收盘价的百分比 数值越大证明越活越
+---股票换手率 如某只股票在一天内成交了2000万股，而该股票的流通股为1亿股，则该股票在这个月的换手率为20%。
 -- ----------------------------
 
 DROP TABLE IF EXISTS `t_shares_******_**`;
@@ -65,6 +67,8 @@ CREATE TABLE `t_shares_******_**`  (
   `shares_total_number` bigint(11) NULL DEFAULT NULL COMMENT '股票总数',
   `shares_allow_total_number` bigint(11) NULL DEFAULT NULL COMMENT '可流动股票总数',
   `deal_shares_number` bigint(11) NULL DEFAULT NULL COMMENT '成交的股票数',
+  `amplitude` double(6, 2) NULL DEFAULT NULL COMMENT '股票振幅',
+  `turnover_rate` double(6, 2) NULL DEFAULT NULL COMMENT '股票换手率',
   `shares_date` date NULL DEFAULT NULL COMMENT '记录时间',
   `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
   `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',

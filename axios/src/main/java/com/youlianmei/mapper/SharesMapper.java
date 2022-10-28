@@ -14,4 +14,6 @@ public interface SharesMapper extends BaseMapper<Shares> {
 
     @Update({"DROP TABLE IF EXISTS ${tableName}"})
     Integer delateTable(@Param("tableName") String tableName);
+
+
 }

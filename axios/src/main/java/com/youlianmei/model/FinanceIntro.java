@@ -7,13 +7,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @AllArgsConstructor //有参构造器
 @NoArgsConstructor //无参构造器
 @TableName(value = "t_finance_intro")//指定表名
-public class FinanceIntro{
+public class FinanceIntro implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @TableId(type = IdType.ASSIGN_UUID)
     private String id;
