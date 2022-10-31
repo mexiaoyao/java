@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youlianmei.mapper.SharesMapper">
+
+    <update id="createTable">
+        CREATE TABLE ${tableName} (
+          `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'uuid32位',
+          `shares_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '股票id对应t_finance_intro的id',
+          `shares_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '股票名字',
+          `code_number` varchar(6) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '股票编码',
+          `today_open_price` double(6, 2) NULL DEFAULT NULL COMMENT '今日开盘价',
+          `yesterday_close_price` double(6, 2) NULL DEFAULT NULL COMMENT '昨日收盘价',
+          `today_max_price` double(6, 2) NULL DEFAULT NULL COMMENT '今日最高价',
+          `today_min_price` double(6, 2) NULL DEFAULT NULL COMMENT '今日最低价',
+          `today_average_price` double(6, 2) NULL DEFAULT NULL COMMENT '今日平均价',
+          `deal_amount` bigint(11) NULL DEFAULT NULL COMMENT '成交金额',
+          `source` tinyint(1) UNSIGNED NOT NULL COMMENT '数据来源[1:定时器,2:导入,3:手动添加]',
+          `shares_total_number` bigint(11) NULL DEFAULT NULL COMMENT '股票总数',
+          `shares_allow_total_number` bigint(11) NULL DEFAULT NULL COMMENT '可流动股票总数',
+          `deal_shares_number` bigint(11) NULL DEFAULT NULL COMMENT '成交的股票数',
+          `amplitude` double(6, 2) NULL DEFAULT NULL COMMENT '股票振幅',
+          `turnover_rate` double(6, 2) NULL DEFAULT NULL COMMENT '股票换手率',
+          `shares_date` date NULL DEFAULT NULL COMMENT '记录时间',
+          `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
+          `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+          `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '备注',
+          PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+    </update>
+
+</mapper>

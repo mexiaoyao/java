@@ -42,7 +42,7 @@ public class StringUtils {
      * @return
      */
     public static boolean isEmpty(final String str) {
-        return (str == null) || (str.length() == 0);
+        return (str == null) || (str.length() == 0) || (str.trim().length() == 0);
     }
 
     /**
@@ -496,6 +496,7 @@ public class StringUtils {
             return null;
         }
     }
+
     public static void main(String[] a){
         String escapeXML = escapeXML("\\");
         System.out.println(escapeXML);
