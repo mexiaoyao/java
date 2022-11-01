@@ -9,6 +9,15 @@ spring:
     url: jdbc:mysql://localhost:3306/ylm?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    pool:
+      max-active: 8
+      min-idle: 0
+      max-idle: 8
+      max-wait: -1
+    password: 123456
 
 mybatis-plus:
   mapper-locations: classpath:/mapping/*.xml

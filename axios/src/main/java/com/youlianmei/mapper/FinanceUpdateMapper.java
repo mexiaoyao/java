@@ -1,7 +1,6 @@
 package com.youlianmei.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.youlianmei.model.FinanceIntro;
 import com.youlianmei.model.FinanceUpdate;
 import org.springframework.stereotype.Repository;
 
