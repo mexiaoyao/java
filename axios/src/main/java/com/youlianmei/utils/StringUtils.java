@@ -4,8 +4,30 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class StringUtils {
+
+    private static final String BASICSTRING = "01789qwertyuSDFGHJi~opa456sdfxc$%^vbnmQWERTY-U23I_OPAghjklzKLZXCVBNM!@#&*";
+
+    /**
+     * 获取指定长度的字符
+     * @param len
+     * @return
+     */
+    public static String stringRandom(Integer len) {
+        String ret = "";
+        len = null==len?4:len;
+        int strLen = BASICSTRING.length() - 1;
+        Random random = new Random(strLen);
+        for(int i=0;i<len;i++){
+            int nextInt = random.nextInt(strLen); //返回int随机数，每个值在[0,bound)之间。
+
+        }
+
+        return ret;
+    }
+
     /**
      * 首字母变小写
      * @param str

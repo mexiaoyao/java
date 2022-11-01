@@ -45,7 +45,6 @@ public class IndexController {
         Map<String,Object> result = new HashMap<>();
         User user = new User();
         user.setName("11");
-        user.setAge(15);
         Boolean ret = userService.save(user);
         result.put("code",1000);
         result.put("ret",ret);

@@ -23,14 +23,16 @@ public class User implements Serializable {
 
     private String name;
 
-    private Integer age;
-
     private String pwd;
 
     private String role;
 
+    private String salt;
+
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
-    @TableField(fill = FieldFill.INSERT_UPDATE)
+
     private Date updateTime;
+
+    private Date lastTime;
 }

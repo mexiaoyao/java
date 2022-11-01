@@ -3,6 +3,7 @@ package com.youlianmei.controller;
 import com.youlianmei.model.User;
 import com.youlianmei.msg.Msg;
 import com.youlianmei.service.UserService;
+import com.youlianmei.utils.Md5;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -39,9 +40,10 @@ public class LoginController {
     public Msg login(@RequestParam("username")String username, @RequestParam("password")String password){
         User user = userService.findByUsername(username);
         Msg msg=null;
+        String pss = Md5.encrypt2ToMD5(password, user.getSalt(), 3);
         if (user == null) {
             msg = Msg.fail("账号错误");
-        } else if (!password.equals(user.getPwd())) {
+        } else if (!pss.equals(user.getPwd())) {
             msg = Msg.fail("密码错误");
         } else {
             //通过UUID生成token字符串,并将其以string类型的数据保存在redis缓存中，key为token，value为username
