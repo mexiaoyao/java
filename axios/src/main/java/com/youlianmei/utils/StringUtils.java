@@ -1,14 +1,26 @@
 package com.youlianmei.utils;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class StringUtils {
 
     private static final String BASICSTRING = "01789qwertyuSDFGHJi~opa456sdfxc$%^vbnmQWERTY-U23I_OPAghjklzKLZXCVBNM!@#&*";
+
+    /**
+     * 获取uuid
+     * @param type 1没有中划线 2有中划线
+     * @return
+     */
+    public static String getUUid(Integer type) {
+        switch(type){
+            case 1:
+                return UUID.randomUUID().toString().replaceAll("-","");
+            default:
+                return UUID.randomUUID().toString();
+
+        }
+    }
 
     /**
      * 获取指定长度的字符
