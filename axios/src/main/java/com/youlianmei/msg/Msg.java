@@ -26,7 +26,7 @@ public class Msg {
     //操作成功
     public static Msg success(String message){
         Msg result=new Msg();
-        result.setCode(200);
+        result.setCode(10000);
         result.setMessage(message);
         return result;
     }
