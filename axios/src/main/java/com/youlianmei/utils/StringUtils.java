@@ -8,6 +8,15 @@ public class StringUtils {
     private static final String BASICSTRING = "01789qwertyuSDFGHJi~opa456sdfxc$%^vbnmQWERTY-U23I_OPAghjklzKLZXCVBNM!@#&*";
 
     /**
+     * 验证码的uuid获取或者赋值
+     * @return
+     */
+    public static String codeUUid(String uuid) {
+        return "code-uuid-"+uuid;
+    }
+
+
+    /**
      * 获取uuid
      * @param type 1没有中划线 2有中划线
      * @return

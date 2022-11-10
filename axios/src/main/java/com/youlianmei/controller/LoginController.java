@@ -9,17 +9,19 @@ import com.youlianmei.msg.Msg;
 import com.youlianmei.service.UserService;
 import com.youlianmei.utils.Md5;
 import com.youlianmei.utils.StringUtils;
+import lombok.extern.log4j.Log4j2;
+import org.apache.log4j.Logger;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @RestController
 public class LoginController {
+
+    private static Logger log = Logger.getLogger(LoginController.class);//方法中写当前类名加class
 
     @Autowired
     LoginProperties loginProperties;
@@ -32,22 +34,29 @@ public class LoginController {
     StringRedisTemplate stringRedisTemplate;
 
     @GetMapping("/code")
-    public Msg getCode(){
+    public Msg getCode( @RequestParam String uuid){
         Msg msg=null;
-        Captcha captcha = loginProperties.getCaptcha();
+        if(null==uuid || "".equals(uuid.trim()) || uuid.trim().length()!=36){
+            msg=Msg.fail("验证码获取失败");
+            log.error("验证码提供的uuid不正确："+uuid);
+            return msg;
+        }
 
-        String uuid = "code-key-"+ StringUtils.getUUid(2);
+        Captcha captcha = loginProperties.getCaptcha();
+        uuid = StringUtils.codeUUid(uuid);
 
         //当验证码类型为 arithmetic时且长度 >= 2 时，captcha.text()的结果有几率为浮点型
         String captchaValue = captcha.text();
         if(captcha.getCharType()-1 == LoginCodeEnum.ARITHMETIC.ordinal() && captchaValue.contains(".")){
             captchaValue = captchaValue.split("\\.")[0];
+            log.info("验证码："+captchaValue);
         }
-        // 保存
-        //redisUtils.set(uuid,captchaValue,loginProperties.getLoginCode().getExpiration(), TimeUnit.MINUTES);
+        // 保存redis
+        //通过前端提供uuid字符串,并将captchaValue其以string类型的数据保存在redis缓存中，key为uuid，value为captchaValue
+        stringRedisTemplate.opsForValue().set(uuid, captchaValue,60, TimeUnit.SECONDS);
 
         // 验证码信息
-        msg=Msg.success("验证码获取成功").add("img",captcha.toBase64()).add("uuid",uuid);
+        msg=Msg.success("验证码获取成功").add("img",captcha.toBase64());
         return msg;
     }
 
@@ -99,7 +108,7 @@ public class LoginController {
         } else {
             //通过UUID生成token字符串,并将其以string类型的数据保存在redis缓存中，key为token，value为username
             String token= StringUtils.getUUid(1);
-            stringRedisTemplate.opsForValue().set(token, loginDao.getUsername(),3600, TimeUnit.SECONDS);
+            stringRedisTemplate.opsForValue().set(token, loginDao.getUsername(),1800, TimeUnit.SECONDS);
             msg=Msg.success("登录成功").add("token",token).add("username",user.getName());
         }
         return msg;
