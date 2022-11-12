@@ -76,4 +76,34 @@ CREATE TABLE `t_shares_******_**`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
+
+-- Table t_grade_dict
+-- des 年级字典
+-- ----------------------------
+DROP TABLE IF EXISTS `t_grade_dict`;
+CREATE TABLE `t_grade_dict`  (
+  `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'uuid32位（年级ID）',
+  `dict_id` tinyint(1) UNSIGNED NOT NULL COMMENT '字典ID',
+  `dict_name` varchar(32) NOT NULL COMMENT '字典名称',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
+  `create_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table t_grade_question
+-- des 年级题目
+-- ----------------------------
+DROP TABLE IF EXISTS `t_grade_question`;
+CREATE TABLE `t_grade_question`  (
+  `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'uuid32位（年级ID）',
+  `question` varchar(32) NOT NULL COMMENT '年级名称',
+  `used_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '使用次数',
+  `dict_id` tinyint(1) UNSIGNED NOT NULL COMMENT '字典ID，对应t_grade_dict的dict_id',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
+  `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '备注',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+
 SET FOREIGN_KEY_CHECKS = 1;
