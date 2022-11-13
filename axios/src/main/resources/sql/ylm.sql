@@ -97,11 +97,15 @@ CREATE TABLE `t_grade_dict`  (
 DROP TABLE IF EXISTS `t_grade_question`;
 CREATE TABLE `t_grade_question`  (
   `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'uuid32位（年级ID）',
-  `question` varchar(32) NOT NULL COMMENT '年级名称',
+  `question` varchar(32) NOT NULL COMMENT '问题',
+  `answers` text NOT NULL COMMENT '答案',
+  `answer_right` text NOT NULL COMMENT '正确答案',
   `used_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '使用次数',
   `dict_id` tinyint(1) UNSIGNED NOT NULL COMMENT '字典ID，对应t_grade_dict的dict_id',
+  `good_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '点赞数',
+  `poor_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '踩数',
   `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
-  `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '备注',
+  `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '描述',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
