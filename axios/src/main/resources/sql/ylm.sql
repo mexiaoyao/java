@@ -85,6 +85,7 @@ CREATE TABLE `t_grade_dict`  (
   `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'uuid32位（年级ID）',
   `dict_id` tinyint(1) UNSIGNED NOT NULL COMMENT '字典ID',
   `dict_name` varchar(32) NOT NULL COMMENT '字典名称',
+  `parent_id` tinyint(1) UNSIGNED NOT NULL COMMENT '父级ID',
   `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
   `create_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   PRIMARY KEY (`id`) USING BTREE
