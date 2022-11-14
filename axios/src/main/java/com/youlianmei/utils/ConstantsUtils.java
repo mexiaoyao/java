@@ -12,6 +12,16 @@ public class ConstantsUtils {
 
     public static final String SHARES_TABLENAME_PRFIX = "t_shares_"; //股票记录表前缀
 
+
+    public static final String WHERE_EQ = "eq"; //where查询参数统一设置 等于
+    public static final String WHERE_GE = "ge"; //where查询参数统一设置 大于等于
+    public static final String WHERE_GT = "gt"; //where查询参数统一设置 大于
+    public static final String WHERE_LE = "le"; //where查询参数统一设置 小于等于
+    public static final String WHERE_LT = "lt"; //where查询参数统一设置 小于
+    public static final String WHERE_LIKE = "like"; //where查询参数统一设置 模糊查询
+    public static final String WHERE_BETWEEN = "between"; //where查询参数统一设置 模糊查询
+
+
     /**
      * 股票类型转为字符
      * @param indexType

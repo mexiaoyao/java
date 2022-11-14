@@ -5,6 +5,26 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class DateUtils {
+
+
+    /**
+     * 判断是否为null
+     * @param date
+     * @return
+     */
+    public static boolean dateIsNull(final Date date) {
+        return date == null;
+    }
+
+    /**
+     * 判断是否为null
+     * @param date
+     * @return
+     */
+    public static boolean dateIsNotNull(final Date date) {
+        return !dateIsNull(date);
+    }
+
     /**
      * date加一天
      * @param d

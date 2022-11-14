@@ -83,10 +83,11 @@ CREATE TABLE `t_shares_******_**`  (
 DROP TABLE IF EXISTS `t_grade_dict`;
 CREATE TABLE `t_grade_dict`  (
   `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'uuid32位（年级ID）',
-  `dict_id` tinyint(1) UNSIGNED NOT NULL COMMENT '字典ID',
+  `dict_id` varchar(32) NOT NULL COMMENT '字典ID',
   `dict_name` varchar(32) NOT NULL COMMENT '字典名称',
-  `parent_id` tinyint(1) UNSIGNED NOT NULL COMMENT '父级ID',
+  `parent_id` varchar(32) NOT NULL COMMENT '父级ID',
   `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `create_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
@@ -101,11 +102,15 @@ CREATE TABLE `t_grade_question`  (
   `question` varchar(32) NOT NULL COMMENT '问题',
   `answers` text NOT NULL COMMENT '答案',
   `answer_right` text NOT NULL COMMENT '正确答案',
+  `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态[1:已审核,2:待审核,3:审核不通过]',
   `used_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '使用次数',
-  `dict_id` tinyint(1) UNSIGNED NOT NULL COMMENT '字典ID，对应t_grade_dict的dict_id',
+  `dict_id` varchar(32) NOT NULL COMMENT '字典ID，对应t_grade_dict的dict_id',
   `good_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '点赞数',
   `poor_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '踩数',
   `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `share_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '分享次数',
+  `create_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '描述',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
