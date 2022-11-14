@@ -85,7 +85,7 @@ CREATE TABLE `t_grade_dict`  (
   `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'uuid32位（年级ID）',
   `dict_id` varchar(32) NOT NULL COMMENT '字典ID',
   `dict_name` varchar(32) NOT NULL COMMENT '字典名称',
-  `parent_id` varchar(32) NOT NULL COMMENT '父级ID',
+  `parent_id` varchar(32) NULL DEFAULT NULL COMMENT '父级ID',
   `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `create_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',

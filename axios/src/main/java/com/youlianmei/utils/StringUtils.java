@@ -1,10 +1,8 @@
 package com.youlianmei.utils;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Field;
+import java.util.*;
 
 public class StringUtils {
     /**
@@ -496,6 +494,73 @@ public class StringUtils {
         }else{
             return null;
         }
+    }
+
+    /**
+     * 生成uuid
+     * @return
+     */
+    public static String getUUid(){
+       return UUID.randomUUID().toString().replace("-", "");
+    }
+
+    /**
+     * 将一个对象里所有的空值属性设置成null
+     *
+     * @param o
+     * @return
+     */
+    public Object changeToNull(Object o) {
+        Class c = o.getClass();
+        Class sc = c.getSuperclass();
+        if (null != sc) {
+            recursionNull(sc, o);
+        }
+        try {
+            Field[] fs = c.getDeclaredFields();
+            for (Field f : fs) {
+                f.setAccessible(true);
+                String st = f.get(o) + "";
+                String str = st.replaceAll(" ", "");
+                if (str.equals("") || str == null || str.equals("null")) {
+                    f.set(o, null);
+                }
+            }
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return o;
+    }
+
+    /**
+     * 判断是否有超类，若有则继续将超类的空值置空
+     * @param sc
+     * @param o
+     * @return
+     */
+    public Object recursionNull(Class sc,Object o) {
+        Class c =sc.getSuperclass();
+        if (null != c) {
+            recursionNull(c,o);
+        }
+        try {
+            Field[] fs = sc.getDeclaredFields();
+            for (Field f : fs) {
+                f.setAccessible(true);
+                String st = f.get(o) + "";
+                String str = st.replaceAll(" ", "");
+                if (str.equals("") || str == null || str.equals("null")) {
+                    f.set(o, null);
+                }
+            }
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return o;
     }
 
     public static void main(String[] a){

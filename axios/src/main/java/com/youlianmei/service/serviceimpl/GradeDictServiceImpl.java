@@ -68,6 +68,9 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
     public Integer actionDo(GradeDictDao dao){
         GradeDict insert = new GradeDict();
         BeanUtils.copyProperties(dao, insert);
+        if( StringUtils.isEmpty(insert.getDictId())  ){
+            insert.setDictId(StringUtils.getUUid());
+        }
         return null==insert.getId() ? baseMapper.insert(insert) : baseMapper.updateById(insert);
     }
 

@@ -9,6 +9,7 @@ import com.youlianmei.service.GradeQuestionService;
 import com.youlianmei.service.GradeDictService;
 import com.youlianmei.service.SharesService;
 import com.youlianmei.utils.ConstantsUtils;
+import com.youlianmei.utils.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,6 +63,13 @@ public class GradeDictController {
     @PostMapping("actionDo")
     public Object actionDo(@RequestBody GradeDictDao gradeDictDao) throws Exception {
         Map<String,Object> obj = new HashMap<>();
+        if(StringUtils.isEmpty(gradeDictDao.getId()) ){
+            gradeDictDao.setId(null);
+        }
+        if(StringUtils.isEmpty(gradeDictDao.getDictId()) ){
+            gradeDictDao.setDictId(null);
+        }
+        gradeDictDao.setCreateName("admin");
         Integer result = gradeDictService.actionDo(gradeDictDao);
         obj.put("code", result == 1 ? 10000 : 0);
         return obj;
