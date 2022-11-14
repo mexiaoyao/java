@@ -21,6 +21,7 @@ public class GradeDict implements Serializable {
     @TableId(type = IdType.ASSIGN_UUID)
     private String id;
 
+    @TableId(type = IdType.ASSIGN_UUID)
     private String dictId;
 
     private String dictName;
