@@ -1,14 +1,8 @@
 package com.youlianmei.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.youlianmei.dao.GradeQuestionDao;
 import com.youlianmei.dao.GradeDictDao;
-import com.youlianmei.model.GradeQuestion;
 import com.youlianmei.model.GradeDict;
-import com.youlianmei.service.GradeQuestionService;
 import com.youlianmei.service.GradeDictService;
-import com.youlianmei.service.SharesService;
-import com.youlianmei.utils.ConstantsUtils;
 import com.youlianmei.utils.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController //@RestController相当于@Controller和@ResponseBody合在一起的作用；
@@ -26,18 +21,15 @@ public class GradeDictController {
     @Resource
     GradeDictService gradeDictService;
 
-
     /**
      * 列表
      * **/
     @PostMapping("list")
     public Object list(@RequestBody GradeDictDao gradeDictDao) throws Exception {
         Map<String,Object> obj = new HashMap<>();
-        Page<GradeDict> result = gradeDictService.pageList(gradeDictDao);
+        List<GradeDict> result = gradeDictService.list(gradeDictDao);
         obj.put("code","10000");
-        obj.put("list",result.getRecords());
-        obj.put("total",result.getTotal());
-        obj.put("page",result.getCurrent());
+        obj.put("list",result);
         return obj;
     }
 

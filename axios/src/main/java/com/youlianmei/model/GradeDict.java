@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor //有参构造器
@@ -46,4 +47,8 @@ public class GradeDict implements Serializable {
     private Date updateTime;
 
     private String createName;
+
+    // 用来解决实体类中有的属性但是数据表中没有的字段
+    @TableField(exist = false)  // 默认为true
+    private List<GradeDict> children;
 }

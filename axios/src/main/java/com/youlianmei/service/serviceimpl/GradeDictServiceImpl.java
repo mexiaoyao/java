@@ -1,17 +1,20 @@
 package com.youlianmei.service.serviceimpl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.youlianmei.dao.GradeDictDao;
 import com.youlianmei.mapper.GradeDictMapper;
 import com.youlianmei.model.GradeDict;
 import com.youlianmei.service.GradeDictService;
 import com.youlianmei.utils.DateUtils;
+import com.youlianmei.utils.ListUtils;
 import com.youlianmei.utils.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -19,11 +22,7 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
 
     @Override
     @Transactional(rollbackFor = Exception.class) //一般编辑，添加，删除（即对数据库进行操作）时用到，此处只是展示案例
-    public Page<GradeDict> pageList(GradeDictDao dao){
-        int pageNo = null==dao.getPageNo() ? 1 : dao.getPageNo();
-        int pageSize = null==dao.getPageSize() ? 10 : dao.getPageSize();
-        //创建Page对象
-        Page<GradeDict> eduTeacherPage = new Page<>(pageNo,pageSize);
+    public List<GradeDict> list(GradeDictDao dao){
         //构建条件
         QueryWrapper<GradeDict> wrapper = new QueryWrapper<>();
         //多条件组合查询
@@ -60,7 +59,8 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
         //多条件组合查询
         wrapper.orderByDesc("create_time");
         //调用mybatis plus分页方法进行查询
-        return baseMapper.selectPage(eduTeacherPage,wrapper);
+        List<GradeDict> result = baseMapper.selectList(wrapper);
+        return ListUtils.gradeDictTree(result);
     }
 
     @Override
