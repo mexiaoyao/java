@@ -30,7 +30,7 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
             wrapper.eq("id",dao.getId());
         }
         if(StringUtils.isNotEmpty(dao.getDictName())){
-            wrapper.like("dictName",dao.getDictName());
+            wrapper.like("dict_name",dao.getDictName());
         }
         if(StringUtils.isNotEmpty(dao.getParentId())){
             wrapper.eq("parent_id",dao.getParentId());
@@ -54,7 +54,7 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
             wrapper.lt("update_time",dao.getUpdateTimeEnd());
         }
         if (!StringUtils.isEmpty(dao.getCreateName())){
-            wrapper.like("createName",dao.getCreateName());
+            wrapper.like("create_name",dao.getCreateName());
         }
         //多条件组合查询
         wrapper.orderByDesc("create_time");
