@@ -37,6 +37,8 @@ public class GradeQuestion implements Serializable {
 
     private Byte status;
 
+    private Byte type;
+
     /**
      * <p>{@link DateTimeFormat}：接收页面传来的时间字符串并转为{@link Date}
      * <p>{@link JsonFormat}：{@link Date}转为{@link String}返回页面
@@ -56,6 +58,8 @@ public class GradeQuestion implements Serializable {
     private Date updateTime;
 
     private Integer shareNum;
+
+    private String imgUrl;
 
     private String createName;
 

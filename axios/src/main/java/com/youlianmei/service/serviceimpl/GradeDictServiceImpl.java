@@ -22,6 +22,17 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
 
     @Override
     @Transactional(rollbackFor = Exception.class) //一般编辑，添加，删除（即对数据库进行操作）时用到，此处只是展示案例
+    public List<GradeDict> listAll(){
+        //构建条件
+        QueryWrapper<GradeDict> wrapper = new QueryWrapper<>();
+        //多条件组合查询
+        wrapper.orderByDesc("dict_name");
+        //调用mybatis plus分页方法进行查询
+        return baseMapper.selectList(wrapper);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class) //一般编辑，添加，删除（即对数据库进行操作）时用到，此处只是展示案例
     public List<GradeDict> list(GradeDictDao dao){
         //构建条件
         QueryWrapper<GradeDict> wrapper = new QueryWrapper<>();
@@ -57,7 +68,7 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
             wrapper.like("create_name",dao.getCreateName());
         }
         //多条件组合查询
-        wrapper.orderByDesc("create_time");
+        wrapper.orderByDesc("dict_name");
         //调用mybatis plus分页方法进行查询
         List<GradeDict> result = baseMapper.selectList(wrapper);
         return ListUtils.gradeDictTree(result);

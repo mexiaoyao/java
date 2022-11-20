@@ -73,7 +73,7 @@ public class GradeQuestionServiceImpl extends ServiceImpl<GradeQuestionMapper, G
     public Integer actionDo(GradeQuestionDao dao){
         GradeQuestion insert = new GradeQuestion();
         BeanUtils.copyProperties(dao, insert);
-        return null==insert.getId() ? baseMapper.insert(insert) : baseMapper.updateById(insert);
+        return StringUtils.isEmpty(insert.getId()) ? baseMapper.insert(insert) : baseMapper.updateById(insert);
     }
 
     @Override

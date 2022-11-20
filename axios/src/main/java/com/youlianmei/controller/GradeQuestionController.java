@@ -24,7 +24,6 @@ public class GradeQuestionController {
     @Resource
     GradeQuestionService gradeQuestionService;
 
-
     /**
      * 列表
      * **/
@@ -60,6 +59,7 @@ public class GradeQuestionController {
     @PostMapping("actionDo")
     public Object actionDo(@RequestBody GradeQuestionDao gradeQuestionDao) throws Exception {
         Map<String,Object> obj = new HashMap<>();
+        gradeQuestionDao.setCreateName("admin");
         Integer result = gradeQuestionService.actionDo(gradeQuestionDao);
         obj.put("code", result == 1 ? 10000 : 0);
         return obj;

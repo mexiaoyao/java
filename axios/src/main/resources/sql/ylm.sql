@@ -103,6 +103,7 @@ CREATE TABLE `t_grade_question`  (
   `answers` text NOT NULL COMMENT '答案',
   `answer_right` text NOT NULL COMMENT '正确答案',
   `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态[1:已审核,2:待审核,3:审核不通过]',
+  `type` tinyint(1) UNSIGNED NOT NULL COMMENT '状态[1:单选题,2:多选题]',
   `used_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '使用次数',
   `dict_id` varchar(32) NOT NULL COMMENT '字典ID，对应t_grade_dict的dict_id',
   `good_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '点赞数',
@@ -110,6 +111,7 @@ CREATE TABLE `t_grade_question`  (
   `create_time` datetime NULL DEFAULT NULL COMMENT '添加时间',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `share_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '分享次数',
+  `img_url` varchar(255) NULL DEFAULT NULL COMMENT '图片',
   `create_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建人',
   `remarks` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '描述',
   PRIMARY KEY (`id`) USING BTREE

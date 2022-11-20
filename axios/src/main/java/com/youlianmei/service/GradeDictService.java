@@ -10,6 +10,8 @@ public interface GradeDictService extends IService<GradeDict> {
 
     List<GradeDict> list(GradeDictDao dao);
 
+    List<GradeDict> listAll();
+
     Integer actionDo(GradeDictDao dao);
 
     Integer deleteById(String id);

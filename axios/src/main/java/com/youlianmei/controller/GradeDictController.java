@@ -24,6 +24,18 @@ public class GradeDictController {
     /**
      * 列表
      * **/
+    @PostMapping("listAll")
+    public Object listAll() throws Exception {
+        Map<String,Object> obj = new HashMap<>();
+        List<GradeDict> result = gradeDictService.listAll();
+        obj.put("code","10000");
+        obj.put("list",result);
+        return obj;
+    }
+
+    /**
+     * 列表
+     * **/
     @PostMapping("list")
     public Object list(@RequestBody GradeDictDao gradeDictDao) throws Exception {
         Map<String,Object> obj = new HashMap<>();
