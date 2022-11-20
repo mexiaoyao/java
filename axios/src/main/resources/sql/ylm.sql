@@ -103,7 +103,7 @@ CREATE TABLE `t_grade_question`  (
   `answers` text NOT NULL COMMENT '答案',
   `answer_right` text NOT NULL COMMENT '正确答案',
   `status` tinyint(1) UNSIGNED NOT NULL COMMENT '状态[1:已审核,2:待审核,3:审核不通过]',
-  `type` tinyint(1) UNSIGNED NOT NULL COMMENT '状态[1:单选题,2:多选题]',
+  `type` tinyint(1) UNSIGNED NOT NULL COMMENT '状态[1:根据拼音写汉字,2:看汉字写拼音]',
   `used_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '使用次数',
   `dict_id` varchar(32) NOT NULL COMMENT '字典ID，对应t_grade_dict的dict_id',
   `good_num` int(11) UNSIGNED ZEROFILL NOT NULL COMMENT '点赞数',
