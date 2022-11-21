@@ -22,11 +22,23 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
 
     @Override
     @Transactional(rollbackFor = Exception.class) //一般编辑，添加，删除（即对数据库进行操作）时用到，此处只是展示案例
-    public List<GradeDict> listAll(){
+    public List<GradeDict> listAll(Integer type){
         //构建条件
         QueryWrapper<GradeDict> wrapper = new QueryWrapper<>();
         //多条件组合查询
+        wrapper.eq("type", type);
         wrapper.orderByDesc("create_time");
+        //调用mybatis plus分页方法进行查询
+        return baseMapper.selectList(wrapper);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class) //一般编辑，添加，删除（即对数据库进行操作）时用到，此处只是展示案例
+    public List<GradeDict> listAllByParentId(Integer parentId){
+        //构建条件
+        QueryWrapper<GradeDict> wrapper = new QueryWrapper<>();
+        //多条件组合查询
+        wrapper.eq("parent_id", parentId);
         //调用mybatis plus分页方法进行查询
         return baseMapper.selectList(wrapper);
     }

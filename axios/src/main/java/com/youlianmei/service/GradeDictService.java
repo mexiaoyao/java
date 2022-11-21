@@ -10,12 +10,15 @@ public interface GradeDictService extends IService<GradeDict> {
 
     List<GradeDict> list(GradeDictDao dao);
 
-    List<GradeDict> listAll();
+    List<GradeDict> listAll(Integer type);
+
+    List<GradeDict> listAllByParentId(Integer parentId);
 
     Integer actionDo(GradeDictDao dao);
 
     Integer deleteById(Integer id);
 
     GradeDict selectById(Integer id);
+
 
 }

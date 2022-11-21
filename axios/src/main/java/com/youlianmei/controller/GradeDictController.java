@@ -25,9 +25,14 @@ public class GradeDictController {
      * 列表
      * **/
     @PostMapping("listAll")
-    public Object listAll() throws Exception {
+    public Object listAll(@RequestBody GradeDictDao gradeDictDao) throws Exception {
         Map<String,Object> obj = new HashMap<>();
-        List<GradeDict> result = gradeDictService.listAll();
+        if(null!=gradeDictDao.getType()){
+            obj.put("code","20000");
+            obj.put("msg","type不可为空");
+            return obj;
+        }
+        List<GradeDict> result = gradeDictService.listAll(gradeDictDao.getType());
         obj.put("code","10000");
         obj.put("list",result);
         return obj;
@@ -52,9 +57,17 @@ public class GradeDictController {
     public Object delete(@RequestBody GradeDictDao gradeDictDao) throws Exception {
         Map<String,Object> obj = new HashMap<>();
         if(null==gradeDictDao.getId()){
-            obj.put("code", 0);
+            obj.put("code", 20000);
+            obj.put("msg", "参数为空");
             return obj;
         }
+        List<GradeDict> list = gradeDictService.listAllByParentId(gradeDictDao.getId());
+        if(null!=list && list.size()>0){
+            obj.put("code", 20000);
+            obj.put("msg", "请先删除子级类型");
+            return obj;
+        }
+
         //如果数据就禁止删除--待开发
         Integer result = gradeDictService.deleteById(gradeDictDao.getId());
         obj.put("code", result == 1 ? 10000 : 0);
