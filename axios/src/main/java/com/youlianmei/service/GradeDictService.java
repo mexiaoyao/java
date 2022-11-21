@@ -14,8 +14,8 @@ public interface GradeDictService extends IService<GradeDict> {
 
     Integer actionDo(GradeDictDao dao);
 
-    Integer deleteById(String id);
+    Integer deleteById(Integer id);
 
-    GradeDict selectById(String id);
+    GradeDict selectById(Integer id);
 
 }

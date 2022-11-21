@@ -17,7 +17,7 @@ public class ListUtils {
         List<GradeDict> result = new ArrayList<>();
         // 第一步遍历获取到的数据，将根节点数据存放 result 里
         for (GradeDict gradeDict: list) {
-            if ( StringUtils.isEmpty(gradeDict.getParentId())) {
+            if ( gradeDict.getParentId().intValue()==0 ) {
                 result.add(gradeDict);
             }
         }
@@ -39,13 +39,13 @@ public class ListUtils {
      * @param List<GradeDict> list 所有节点集合
      * @return 返回子节点列表
      */
-    public static List<GradeDict> getChildren(String id, List<GradeDict> list) {
+    public static List<GradeDict> getChildren(Integer id, List<GradeDict> list) {
         // 存在子节点数据
         List<GradeDict> childList = new ArrayList<GradeDict>();
         // 遍历所有节点数据
         for (GradeDict item : list) {
             // 如果当前节点 ID 与父节点 ID 一致，表示当前数据是该节点的子节点
-            if ( StringUtils.isNotEmpty(item.getParentId()) && item.getParentId().equals(id)) {
+            if ( null!=item.getParentId() && item.getParentId().intValue()==id) {
                 childList.add(item);
             }
         }

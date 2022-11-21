@@ -29,7 +29,9 @@ public class GradeQuestion implements Serializable {
 
     private Integer usedNum;
 
-    private String dictId;
+    private Integer dictId;
+
+    private String path;
 
     private Integer goodNum;
 

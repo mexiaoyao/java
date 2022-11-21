@@ -26,7 +26,7 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
         //构建条件
         QueryWrapper<GradeDict> wrapper = new QueryWrapper<>();
         //多条件组合查询
-        wrapper.orderByDesc("dict_name");
+        wrapper.orderByDesc("create_time");
         //调用mybatis plus分页方法进行查询
         return baseMapper.selectList(wrapper);
     }
@@ -37,13 +37,16 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
         //构建条件
         QueryWrapper<GradeDict> wrapper = new QueryWrapper<>();
         //多条件组合查询
-        if(StringUtils.isNotEmpty(dao.getId())){
+        if(null!=dao.getId()){
             wrapper.eq("id",dao.getId());
+        }
+        if(null!=dao.getType()){
+            wrapper.eq("type",dao.getType());
         }
         if(StringUtils.isNotEmpty(dao.getDictName())){
             wrapper.like("dict_name",dao.getDictName());
         }
-        if(StringUtils.isNotEmpty(dao.getParentId())){
+        if(null!=dao.getParentId()){
             wrapper.eq("parent_id",dao.getParentId());
         }
         if ( DateUtils.dateIsNotNull(dao.getCreateTimeStart())){
@@ -79,21 +82,18 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
     public Integer actionDo(GradeDictDao dao){
         GradeDict insert = new GradeDict();
         BeanUtils.copyProperties(dao, insert);
-        if( StringUtils.isEmpty(insert.getDictId())  ){
-            insert.setDictId(StringUtils.getUUid());
-        }
         return null==insert.getId() ? baseMapper.insert(insert) : baseMapper.updateById(insert);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Integer deleteById(String id){
+    public Integer deleteById(Integer id){
         return baseMapper.deleteById(id);
     }
 
 
     @Override
-    public GradeDict selectById(String id){
+    public GradeDict selectById(Integer id){
         return baseMapper.selectById(id);
     }
 

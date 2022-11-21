@@ -67,12 +67,6 @@ public class GradeDictController {
     @PostMapping("actionDo")
     public Object actionDo(@RequestBody GradeDictDao gradeDictDao) throws Exception {
         Map<String,Object> obj = new HashMap<>();
-        if(StringUtils.isEmpty(gradeDictDao.getId()) ){
-            gradeDictDao.setId(null);
-        }
-        if(StringUtils.isEmpty(gradeDictDao.getDictId()) ){
-            gradeDictDao.setDictId(null);
-        }
         gradeDictDao.setCreateName("admin");
         Integer result = gradeDictService.actionDo(gradeDictDao);
         obj.put("code", result == 1 ? 10000 : 0);

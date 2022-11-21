@@ -19,14 +19,14 @@ public class GradeDict implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.ASSIGN_UUID)
-    private String id;
+    @TableId(type = IdType.AUTO)
+    private Integer id;
 
-    private String dictId;
+    private Integer type;
 
     private String dictName;
 
-    private String parentId;
+    private Integer parentId;
 
     /**
      * <p>{@link DateTimeFormat}：接收页面传来的时间字符串并转为{@link Date}
