@@ -83,7 +83,7 @@ public class GradeDictServiceImpl extends ServiceImpl<GradeDictMapper, GradeDict
             wrapper.like("create_name",dao.getCreateName());
         }
         //多条件组合查询
-        wrapper.orderByDesc("dict_name");
+        wrapper.orderByDesc("create_time");
         //调用mybatis plus分页方法进行查询
         List<GradeDict> result = baseMapper.selectList(wrapper);
         return ListUtils.gradeDictTree(result);
