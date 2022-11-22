@@ -29,15 +29,13 @@ public class GradeQuestion implements Serializable {
 
     private Integer usedNum;
 
-    private Integer dictId;
+    private String dictTypePath;
 
-    private String path;
+    private String dictSourcePath;
 
     private Integer goodNum;
 
     private Integer poorNum;
-
-    private Byte status;
 
     private Byte type;
 

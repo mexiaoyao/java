@@ -16,6 +16,16 @@ import java.util.Date;
 @NoArgsConstructor //无参构造器
 public class GradeQuestionDao extends GradeQuestion {
 
+    /**
+     * 对应dictTypePath
+     * **/
+    private String dictTypeId;
+
+    /**
+     * 对应dictSourcePath
+     * **/
+    private String dictSourceId;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date createTimeStart;

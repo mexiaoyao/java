@@ -92,22 +92,6 @@ public class GradeQuestionServiceImpl extends ServiceImpl<GradeQuestionMapper, G
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
-    public Integer statusBathById(List<GradeQuestionDao> listDao){
-        try {
-            for (GradeQuestionDao gradeQuestionDao : listDao) {
-                GradeQuestion gradeQuestion = new GradeQuestion();
-                gradeQuestion.setId(gradeQuestionDao.getId());
-                gradeQuestion.setStatus(gradeQuestionDao.getStatus());
-                baseMapper.updateById(gradeQuestion);
-            }
-        }catch(Exception e){
-            return 0;
-        }
-        return 1;
-    }
-
-    @Override
     public GradeQuestion selectById(String id){
         return baseMapper.selectById(id);
     }

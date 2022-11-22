@@ -15,8 +15,6 @@ public interface GradeQuestionService extends IService<GradeQuestion> {
 
     Integer actionDo(GradeQuestionDao dao);
 
-    Integer statusBathById(List<GradeQuestionDao> listDao);
-
     GradeQuestion selectById(String id);
 
 }

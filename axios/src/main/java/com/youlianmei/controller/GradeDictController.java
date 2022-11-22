@@ -27,7 +27,7 @@ public class GradeDictController {
     @PostMapping("listAll")
     public Object listAll(@RequestBody GradeDictDao gradeDictDao) throws Exception {
         Map<String,Object> obj = new HashMap<>();
-        if(null!=gradeDictDao.getType()){
+        if(null==gradeDictDao.getType()){
             obj.put("code","20000");
             obj.put("msg","type不可为空");
             return obj;
