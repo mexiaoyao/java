@@ -22,6 +22,7 @@ public class GradeQuestionServiceImpl extends ServiceImpl<GradeQuestionMapper, G
     @Override
     @Transactional(rollbackFor = Exception.class) //一般编辑，添加，删除（即对数据库进行操作）时用到，此处只是展示案例
     public Page<GradeQuestion> pageList(GradeQuestionDao dao){
+        StringUtils.questionPath(dao,2);
         int pageNo = null==dao.getPageNo() ? 1 : dao.getPageNo();
         int pageSize = null==dao.getPageSize() ? 10 : dao.getPageSize();
         //创建Page对象
@@ -31,6 +32,12 @@ public class GradeQuestionServiceImpl extends ServiceImpl<GradeQuestionMapper, G
         //多条件组合查询
         if(StringUtils.isNotEmpty(dao.getId())){
             wrapper.eq("id",dao.getId());
+        }
+        if(StringUtils.isNotEmpty(dao.getDictTypePath())){
+            wrapper.like("dict_type_path",dao.getDictTypePath());
+        }
+        if(StringUtils.isNotEmpty(dao.getDictSourcePath())){
+            wrapper.like("dict_source_path",dao.getDictSourcePath());
         }
         if(StringUtils.isNotEmpty(dao.getQuestion())){
             wrapper.like("question",dao.getQuestion());
@@ -71,6 +78,7 @@ public class GradeQuestionServiceImpl extends ServiceImpl<GradeQuestionMapper, G
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Integer actionDo(GradeQuestionDao dao){
+        StringUtils.questionPath(dao,1);
         GradeQuestion insert = new GradeQuestion();
         BeanUtils.copyProperties(dao, insert);
         return StringUtils.isEmpty(insert.getId()) ? baseMapper.insert(insert) : baseMapper.updateById(insert);

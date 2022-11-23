@@ -1,5 +1,7 @@
 package com.youlianmei.utils;
 
+import com.youlianmei.dao.GradeQuestionDao;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.util.*;
@@ -561,6 +563,30 @@ public class StringUtils {
             e.printStackTrace();
         }
         return o;
+    }
+
+    /**
+     * @param  dao
+     * type 1 insert注入 2sql查询
+     * **/
+    public static void questionPath(GradeQuestionDao dao, int type) {
+        String str = "";
+        if( !dao.getDictTypeId().isEmpty() ){
+            if(type==1){
+                for(Integer i : dao.getDictTypeId()) str += "".equals(str) ? String.valueOf(i) : "," + String.valueOf(i);
+            }else if(type==2){
+                str = String.valueOf( dao.getDictTypeId().get(dao.getDictTypeId().size() -1) )  ;
+            }
+            if( isNotEmpty(str) ) dao.setDictTypePath(str);
+        }
+        if( !dao.getDictSourceId().isEmpty() ){
+            if(type==1){
+                for(Integer i : dao.getDictSourceId()) str += "".equals(str) ? String.valueOf(i) : "," + String.valueOf(i);
+            }else if(type==2){
+                str = String.valueOf( dao.getDictSourceId().get(dao.getDictSourceId().size() -1) )  ;
+            }
+            if( isNotEmpty(str) ) dao.setDictSourcePath(str);
+        }
     }
 
     public static void main(String[] a){

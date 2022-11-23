@@ -31,7 +31,7 @@ public class GradeQuestionController {
     public Object list(@RequestBody GradeQuestionDao gradeQuestionDao) throws Exception {
         Map<String,Object> obj = new HashMap<>();
         Page<GradeQuestion> result = gradeQuestionService.pageList(gradeQuestionDao);
-        obj.put("code","10000");
+        obj.put("code",10000);
         obj.put("list",result.getRecords());
         obj.put("total",result.getTotal());
         obj.put("page",result.getCurrent());
@@ -45,11 +45,11 @@ public class GradeQuestionController {
     public Object delete(@RequestBody List<String> list) throws Exception {
         Map<String,Object> obj = new HashMap<>();
         if(null==list || list.size()==0){
-            obj.put("code", 0);
+            obj.put("code", 20000);
             return obj;
         }
         Integer result = gradeQuestionService.deleteBathById(list);
-        obj.put("code", result == 1 ? 10000 : 0);
+        obj.put("code", result == 1 ? 10000 : 20000);
         return obj;
     }
 
@@ -61,7 +61,7 @@ public class GradeQuestionController {
         Map<String,Object> obj = new HashMap<>();
         gradeQuestionDao.setCreateName("admin");
         Integer result = gradeQuestionService.actionDo(gradeQuestionDao);
-        obj.put("code", result == 1 ? 10000 : 0);
+        obj.put("code", result == 1 ? 10000 : 20000);
         return obj;
     }
 

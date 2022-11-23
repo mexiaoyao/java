@@ -70,7 +70,7 @@ public class GradeDictController {
 
         //如果数据就禁止删除--待开发
         Integer result = gradeDictService.deleteById(gradeDictDao.getId());
-        obj.put("code", result == 1 ? 10000 : 0);
+        obj.put("code", result == 1 ? 10000 : 20000);
         return obj;
     }
 
@@ -82,7 +82,7 @@ public class GradeDictController {
         Map<String,Object> obj = new HashMap<>();
         gradeDictDao.setCreateName("admin");
         Integer result = gradeDictService.actionDo(gradeDictDao);
-        obj.put("code", result == 1 ? 10000 : 0);
+        obj.put("code", result == 1 ? 10000 : 20000);
         return obj;
     }
 

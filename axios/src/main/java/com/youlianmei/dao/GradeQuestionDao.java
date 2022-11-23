@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)   //标在子类上
 @Data
@@ -19,12 +20,12 @@ public class GradeQuestionDao extends GradeQuestion {
     /**
      * 对应dictTypePath
      * **/
-    private String dictTypeId;
+    private List<Integer> dictTypeId;
 
     /**
      * 对应dictSourcePath
      * **/
-    private String dictSourceId;
+    private List<Integer> dictSourceId;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
