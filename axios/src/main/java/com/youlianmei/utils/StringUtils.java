@@ -570,8 +570,8 @@ public class StringUtils {
      * type 1 insert注入 2sql查询
      * **/
     public static void questionPath(GradeQuestionDao dao, int type) {
-        String str = "";
         if( !dao.getDictTypeId().isEmpty() ){
+            String str = "";
             if(type==1){
                 for(Integer i : dao.getDictTypeId()) str += "".equals(str) ? String.valueOf(i) : "," + String.valueOf(i);
             }else if(type==2){
@@ -580,12 +580,31 @@ public class StringUtils {
             if( isNotEmpty(str) ) dao.setDictTypePath(str);
         }
         if( !dao.getDictSourceId().isEmpty() ){
+            String str = "";
             if(type==1){
                 for(Integer i : dao.getDictSourceId()) str += "".equals(str) ? String.valueOf(i) : "," + String.valueOf(i);
             }else if(type==2){
                 str = String.valueOf( dao.getDictSourceId().get(dao.getDictSourceId().size() -1) )  ;
             }
             if( isNotEmpty(str) ) dao.setDictSourcePath(str);
+        }
+        if( !dao.getDictTypeName().isEmpty() ){
+            String str = "";
+            if(type==1){
+                for(String i : dao.getDictTypeName()) str += "".equals(str) ? i : "/" + i;
+            }else if(type==2){
+                str = dao.getDictTypeName().get(dao.getDictTypeName().size() -1) ;
+            }
+            if( isNotEmpty(str) ) dao.setDictTypePathName(str);
+        }
+        if( !dao.getDictSourceName().isEmpty() ){
+            String str = "";
+            if(type==1){
+                for(String i : dao.getDictSourceName()) str += "".equals(str) ? i : "/" + i;
+            }else if(type==2){
+                str = dao.getDictSourceName().get(dao.getDictSourceName().size() -1) ;
+            }
+            if( isNotEmpty(str) ) dao.setDictSourcePathName(str);
         }
     }
 

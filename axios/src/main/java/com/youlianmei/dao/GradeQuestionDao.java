@@ -22,10 +22,14 @@ public class GradeQuestionDao extends GradeQuestion {
      * **/
     private List<Integer> dictTypeId;
 
+    private List<String> dictTypeName;
+
     /**
      * 对应dictSourcePath
      * **/
     private List<Integer> dictSourceId;
+
+    private List<String> dictSourceName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
