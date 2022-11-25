@@ -100,7 +100,7 @@ DROP TABLE IF EXISTS `t_grade_question`;
 CREATE TABLE `t_grade_question`  (
   `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'uuid32位（年级ID）',
   `question` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '问题',
-  `answers` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '答案',
+  `answers` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '答案',
   `answer_right` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '正确答案',
   `type` tinyint(1) UNSIGNED NOT NULL COMMENT '状态[1:根据拼音写汉字,2:看汉字写拼音]',
   `used_num` int(11) UNSIGNED ZEROFILL NOT NULL DEFAULT 0 COMMENT '使用次数',
