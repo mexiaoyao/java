@@ -570,15 +570,47 @@ public class StringUtils {
      * type 1 insert注入 2sql查询
      * **/
     public static void questionPath(GradeQuestionDao dao, int type) {
-        if( !dao.getDictTypeId().isEmpty() ){
+        //试卷种类
+        if( !dao.getDictTaskId().isEmpty() ){
             String str = "";
             if(type==1){
-                for(Integer i : dao.getDictTypeId()) str += "".equals(str) ? String.valueOf(i) : "," + String.valueOf(i);
+                for(Integer i : dao.getDictTaskId()) str += "".equals(str) ? String.valueOf(i) : "," + String.valueOf(i);
             }else if(type==2){
-                str = String.valueOf( dao.getDictTypeId().get(dao.getDictTypeId().size() -1) )  ;
+                str = String.valueOf( dao.getDictTaskId().get(dao.getDictTaskId().size() -1) )  ;
             }
-            if( isNotEmpty(str) ) dao.setDictTypePath(str);
+            if( isNotEmpty(str) ) dao.setDictTaskPath(str);
         }
+        if( !dao.getDictTaskName().isEmpty() ){
+            String str = "";
+            if(type==1){
+                for(String i : dao.getDictTaskName()) str += "".equals(str) ? i : "/" + i;
+            }else if(type==2){
+                str = dao.getDictTaskName().get(dao.getDictTaskName().size() -1) ;
+            }
+            if( isNotEmpty(str) ) dao.setDictTaskPathName(str);
+        }
+
+        //考题所属年级
+        if( !dao.getDictGradeId().isEmpty() ){
+            String str = "";
+            if(type==1){
+                for(Integer i : dao.getDictGradeId()) str += "".equals(str) ? String.valueOf(i) : "," + String.valueOf(i);
+            }else if(type==2){
+                str = String.valueOf( dao.getDictGradeId().get(dao.getDictGradeId().size() -1) )  ;
+            }
+            if( isNotEmpty(str) ) dao.setDictGradePath(str);
+        }
+        if( !dao.getDictGradeName().isEmpty() ){
+            String str = "";
+            if(type==1){
+                for(String i : dao.getDictGradeName()) str += "".equals(str) ? i : "/" + i;
+            }else if(type==2){
+                str = dao.getDictGradeName().get(dao.getDictGradeName().size() -1) ;
+            }
+            if( isNotEmpty(str) ) dao.setDictGradePathName(str);
+        }
+
+        //大题来源
         if( !dao.getDictSourceId().isEmpty() ){
             String str = "";
             if(type==1){
@@ -587,15 +619,6 @@ public class StringUtils {
                 str = String.valueOf( dao.getDictSourceId().get(dao.getDictSourceId().size() -1) )  ;
             }
             if( isNotEmpty(str) ) dao.setDictSourcePath(str);
-        }
-        if( !dao.getDictTypeName().isEmpty() ){
-            String str = "";
-            if(type==1){
-                for(String i : dao.getDictTypeName()) str += "".equals(str) ? i : "/" + i;
-            }else if(type==2){
-                str = dao.getDictTypeName().get(dao.getDictTypeName().size() -1) ;
-            }
-            if( isNotEmpty(str) ) dao.setDictTypePathName(str);
         }
         if( !dao.getDictSourceName().isEmpty() ){
             String str = "";
@@ -606,6 +629,27 @@ public class StringUtils {
             }
             if( isNotEmpty(str) ) dao.setDictSourcePathName(str);
         }
+
+        //大题分类
+        if( !dao.getDictTypeId().isEmpty() ){
+            String str = "";
+            if(type==1){
+                for(Integer i : dao.getDictTypeId()) str += "".equals(str) ? String.valueOf(i) : "," + String.valueOf(i);
+            }else if(type==2){
+                str = String.valueOf( dao.getDictTypeId().get(dao.getDictTypeId().size() -1) )  ;
+            }
+            if( isNotEmpty(str) ) dao.setDictTypePath(str);
+        }
+        if( !dao.getDictTypeName().isEmpty() ){
+            String str = "";
+            if(type==1){
+                for(String i : dao.getDictTypeName()) str += "".equals(str) ? i : "/" + i;
+            }else if(type==2){
+                str = dao.getDictTypeName().get(dao.getDictTypeName().size() -1) ;
+            }
+            if( isNotEmpty(str) ) dao.setDictTypePathName(str);
+        }
+
     }
 
     public static void main(String[] a){

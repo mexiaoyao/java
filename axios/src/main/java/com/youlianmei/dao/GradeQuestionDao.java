@@ -18,11 +18,18 @@ import java.util.List;
 public class GradeQuestionDao extends GradeQuestion {
 
     /**
-     * 对应dictTypePath
+     * 对应dictTaskPath
      * **/
-    private List<Integer> dictTypeId;
+    private List<Integer> dictTaskId;
 
-    private List<String> dictTypeName;
+    private List<String> dictTaskName;
+
+    /**
+     * 对应dictGradePath
+     * **/
+    private List<Integer> dictGradeId;
+
+    private List<String> dictGradeName;
 
     /**
      * 对应dictSourcePath
@@ -30,6 +37,14 @@ public class GradeQuestionDao extends GradeQuestion {
     private List<Integer> dictSourceId;
 
     private List<String> dictSourceName;
+
+    /**
+     * 对应dictTypePath
+     * **/
+    private List<Integer> dictTypeId;
+
+    private List<String> dictTypeName;
+
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")

@@ -39,6 +39,9 @@ public class GradeQuestionServiceImpl extends ServiceImpl<GradeQuestionMapper, G
         if(StringUtils.isNotEmpty(dao.getDictSourcePath())){
             wrapper.like("dict_source_path",dao.getDictSourcePath());
         }
+        if(StringUtils.isNotEmpty(dao.getDictGradePath())){
+            wrapper.like("dict_grade_path",dao.getDictGradePath());
+        }
         if(StringUtils.isNotEmpty(dao.getQuestion())){
             wrapper.like("question",dao.getQuestion());
         }

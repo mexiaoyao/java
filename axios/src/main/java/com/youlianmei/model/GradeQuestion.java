@@ -21,6 +21,27 @@ public class GradeQuestion implements Serializable {
     @TableId(type = IdType.ASSIGN_UUID)
     private String id;
 
+
+    private String dictTaskPath;
+
+    private String dictTaskPathName;
+
+
+    private String dictGradePath;
+
+    private String dictGradePathName;
+
+
+    private String dictSourcePath;
+
+    private String dictSourcePathName;
+
+
+    private String dictTypePath;
+
+    private String dictTypePathName;
+
+
     private String question;
 
     private String answers;
@@ -28,14 +49,6 @@ public class GradeQuestion implements Serializable {
     private String answerRight;
 
     private Integer usedNum;
-
-    private String dictTypePath;
-
-    private String dictTypePathName;
-
-    private String dictSourcePath;
-
-    private String dictSourcePathName;
 
     private Integer goodNum;
 
