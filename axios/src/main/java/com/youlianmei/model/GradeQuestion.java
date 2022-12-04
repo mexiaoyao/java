@@ -41,6 +41,7 @@ public class GradeQuestion implements Serializable {
 
     private String dictTypePathName;
 
+    private String intro;
 
     private String question;
 

@@ -108,6 +108,7 @@ CREATE TABLE `t_grade_question`  (
   `dict_source_path_name` varchar(150) NOT NULL COMMENT '字典ID-答题来源，对应t_grade_dict的id，例如：0,1,3,t_grade_dict中id',
   `dict_type_path` varchar(55) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '字典ID-答题类型，对应t_grade_dict的id，例如：0,1,3,t_grade_dict中dict_name',
   `dict_type_path_name` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '字典ID-答题类型，对应t_grade_dict的id，例如：0,1,3,t_grade_dict中dict_name',
+  `intro` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '介绍',
   `question` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '问题',
   `answers` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '答案',
   `answer_right` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '正确答案',
