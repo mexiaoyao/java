@@ -17,4 +17,6 @@ public interface GradeQuestionService extends IService<GradeQuestion> {
 
     GradeQuestion selectById(String id);
 
+    Boolean insertBatch(List<GradeQuestionDao> gradeQuestionDaoList);
+
 }

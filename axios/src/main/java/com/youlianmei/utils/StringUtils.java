@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 public class StringUtils {
+
     /**
      * 首字母变小写
      * @param str
@@ -503,7 +504,7 @@ public class StringUtils {
      * @return
      */
     public static String getUUid(){
-       return UUID.randomUUID().toString().replace("-", "");
+       return UUID.randomUUID().toString().replace("-", "").toLowerCase();
     }
 
     /**

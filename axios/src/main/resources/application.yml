@@ -4,6 +4,9 @@ server:
     context-path: /ylm
 
 spring:
+  multipart:
+    max-file-size: 100MB
+    max-request-size: 100MB
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/ylm?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai

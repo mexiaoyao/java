@@ -64,4 +64,17 @@ public class ListUtils {
         return minValue;
     }
 
+
+
+    /**
+     * 判断是否为空
+     * 空为true 否为false
+     * **/
+    public static Boolean isEmpty(List list){
+        if(null==list || list.size()==0){
+            return true;
+        }
+        return false;
+    }
+
 }

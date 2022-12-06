@@ -6,6 +6,9 @@ import java.util.GregorianCalendar;
 
 public class DateUtils {
 
+    public static Date getDate() {
+        return new Date();
+    }
 
     /**
      * 判断是否为null

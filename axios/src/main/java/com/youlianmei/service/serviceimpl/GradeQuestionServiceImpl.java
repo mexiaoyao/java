@@ -13,6 +13,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -105,6 +106,23 @@ public class GradeQuestionServiceImpl extends ServiceImpl<GradeQuestionMapper, G
     @Override
     public GradeQuestion selectById(String id){
         return baseMapper.selectById(id);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Boolean insertBatch(List<GradeQuestionDao> gradeQuestionDaoList){
+        try {
+            List<GradeQuestion> gradeQuestionList = new ArrayList<GradeQuestion>();
+            for (GradeQuestionDao gradeQuestionDao : gradeQuestionDaoList) {
+                StringUtils.questionPath(gradeQuestionDao,1);
+                GradeQuestion gradeQuestion = new GradeQuestion();
+                BeanUtils.copyProperties(gradeQuestionDao, gradeQuestion);
+                gradeQuestionList.add(gradeQuestion);
+            }
+            return baseMapper.insertBatch(gradeQuestionList);
+        }catch(Exception e){
+            return false;
+        }
     }
 
 }
