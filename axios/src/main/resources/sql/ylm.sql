@@ -127,3 +127,31 @@ CREATE TABLE `t_grade_question`  (
 
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+-- ----------------------------
+-- Records of t_grade_dict
+-- ----------------------------
+INSERT INTO `t_grade_dict` VALUES ('1', '1', '语文', '0', '2022-12-08 21:49:54', '2022-12-08 21:49:54', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('2', '1', '数学', '0', '2022-12-08 21:50:07', '2022-12-08 21:50:07', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('3', '1', '英语', '0', '2022-12-08 21:50:25', '2022-12-08 21:50:25', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('4', '2', '一年级', '0', '2022-12-08 21:50:38', '2022-12-08 21:50:38', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('5', '2', '二年级', '0', '2022-12-08 21:50:44', '2022-12-08 21:50:44', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('6', '2', '三年级', '0', '2022-12-08 21:50:50', '2022-12-08 21:50:50', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('7', '2', '四年级', '0', '2022-12-08 21:50:56', '2022-12-08 21:50:56', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('8', '2', '五年级', '0', '2022-12-08 21:51:03', '2022-12-08 21:51:03', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('9', '3', '苏教版', '0', '2022-12-08 21:52:00', '2022-12-08 21:52:00', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('10', '3', '人教版', '0', '2022-12-08 21:52:07', '2022-12-08 21:52:07', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('11', '3', '江苏省沭阳县北丁集乡中心小学', '0', '2022-12-08 21:52:47', '2022-12-08 21:52:47', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('12', '3', '一年级', '11', '2022-12-08 21:52:57', '2022-12-08 21:52:57', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('13', '3', '二年级', '11', '2022-12-08 21:53:06', '2022-12-08 21:53:06', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('14', '3', '三年级', '11', '2022-12-08 21:53:15', '2022-12-08 21:53:15', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('15', '3', '四年级', '11', '2022-12-08 21:53:23', '2022-12-08 21:53:23', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('16', '3', '期中考试', '15', '2022-12-08 21:53:52', '2022-12-08 21:53:52', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('17', '3', '期末考试', '15', '2022-12-08 21:54:00', '2022-12-08 21:54:00', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('18', '4', '一题', '0', '2022-12-08 21:54:36', '2022-12-08 21:54:36', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('19', '4', '二题', '0', '2022-12-08 21:54:47', '2022-12-08 21:54:47', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('20', '4', '三题', '0', '2022-12-08 21:55:00', '2022-12-08 21:55:00', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('21', '4', '四题', '0', '2022-12-08 21:55:21', '2022-12-08 21:55:21', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('22', '4', '五题', '0', '2022-12-08 21:55:33', '2022-12-08 21:55:33', 'admin');
+INSERT INTO `t_grade_dict` VALUES ('23', '4', '填空题', '18', '2022-12-08 21:55:52', '2022-12-08 21:55:52', 'admin');
