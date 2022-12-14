@@ -11,6 +11,10 @@ public interface GradeQuestionService extends IService<GradeQuestion> {
 
     Page<GradeQuestion> pageList(GradeQuestionDao GradeQuestion);
 
+    Integer pageNum(GradeQuestionDao dao);
+
+    List<GradeQuestion> listany(GradeQuestionDao dao);
+
     Integer deleteBathById(List<String> list);
 
     Integer actionDo(GradeQuestionDao dao);

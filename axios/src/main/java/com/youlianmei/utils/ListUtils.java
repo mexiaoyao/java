@@ -1,6 +1,9 @@
 package com.youlianmei.utils;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.youlianmei.dao.GradeQuestionDao;
 import com.youlianmei.model.GradeDict;
+import com.youlianmei.model.GradeQuestion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +78,52 @@ public class ListUtils {
             return true;
         }
         return false;
+    }
+
+    public static void gradeQuestionWhere(QueryWrapper<GradeQuestion> wrapper, GradeQuestionDao dao){
+        //多条件组合查询
+        if(StringUtils.isNotEmpty(dao.getId())){
+            wrapper.eq("id",dao.getId());
+        }
+        if(StringUtils.isNotEmpty(dao.getDictTypePath())){
+            wrapper.like("dict_type_path",dao.getDictTypePath());
+        }
+        if(StringUtils.isNotEmpty(dao.getDictSourcePath())){
+            wrapper.like("dict_source_path",dao.getDictSourcePath());
+        }
+        if(StringUtils.isNotEmpty(dao.getDictGradePath())){
+            wrapper.like("dict_grade_path",dao.getDictGradePath());
+        }
+        if(StringUtils.isNotEmpty(dao.getQuestion())){
+            wrapper.like("question",dao.getQuestion());
+        }
+        if (StringUtils.isNotEmpty(dao.getAnswers())){
+            wrapper.like("answers",dao.getAnswers());
+        }
+        if (StringUtils.isNotEmpty(dao.getAnswerRight())){
+            wrapper.like("answerRight",dao.getAnswerRight());
+        }
+        if (null!=dao.getCreateTimeStart()){
+            //大于等于
+            wrapper.ge("create_time",dao.getCreateTimeStart());
+        }
+        if (null!=dao.getCreateTimeEnd()){
+            dao.setCreateTimeEnd(DateUtils.dateAddOneDay(dao.getCreateTimeEnd()));
+            //小于
+            wrapper.lt("create_time", dao.getCreateTimeEnd());
+        }
+        if (null!=dao.getUpdateTimeStart()){
+            //大于等于
+            wrapper.ge("update_time",dao.getUpdateTimeStart());
+        }
+        if (null!=dao.getUpdateTimeEnd()){
+            dao.setUpdateTimeEnd(DateUtils.dateAddOneDay(dao.getUpdateTimeEnd()));
+            //小于
+            wrapper.lt("update_time",dao.getUpdateTimeEnd());
+        }
+        if (!StringUtils.isEmpty(dao.getRemarks())){
+            wrapper.like("remarks",dao.getRemarks());
+        }
     }
 
 }

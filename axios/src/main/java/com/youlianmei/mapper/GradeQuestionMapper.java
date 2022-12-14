@@ -1,5 +1,6 @@
 package com.youlianmei.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.youlianmei.model.GradeQuestion;
 import org.apache.ibatis.annotations.Insert;

@@ -65,4 +65,6 @@ public class GradeQuestionDao extends GradeQuestion {
     private Integer pageNo;
 
     private Integer pageSize;
+
+    private Integer limit;
 }

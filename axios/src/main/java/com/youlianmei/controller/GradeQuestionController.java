@@ -41,6 +41,30 @@ public class GradeQuestionController {
     }
 
     /**
+     * 获取符合条件的考题数量
+     * **/
+    @PostMapping("taotalnum")
+    public Object taotalnum(@RequestBody GradeQuestionDao gradeQuestionDao) throws Exception {
+        Map<String,Object> obj = new HashMap<>();
+        Integer result = gradeQuestionService.pageNum(gradeQuestionDao);
+        obj.put("code",10000);
+        obj.put("total",result);
+        return obj;
+    }
+
+    /**
+     * 获取符合条件的考题数量
+     * **/
+    @PostMapping("anyList")
+    public Object anyList(@RequestBody GradeQuestionDao gradeQuestionDao) throws Exception {
+        Map<String,Object> obj = new HashMap<>();
+        List<GradeQuestion> result = gradeQuestionService.listany(gradeQuestionDao);
+        obj.put("code",10000);
+        obj.put("total",result);
+        return obj;
+    }
+
+    /**
      * 删除
      * **/
     @PostMapping("delete")
