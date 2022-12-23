@@ -85,6 +85,9 @@ public class ListUtils {
         if(StringUtils.isNotEmpty(dao.getId())){
             wrapper.eq("id",dao.getId());
         }
+        if(null!=dao.getType() && dao.getType()!=0){
+            wrapper.eq("type",dao.getType());
+        }
         if(StringUtils.isNotEmpty(dao.getDictTypePath())){
             wrapper.like("dict_type_path",dao.getDictTypePath());
         }
