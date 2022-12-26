@@ -84,11 +84,7 @@ public class GradeQuestionServiceImpl extends ServiceImpl<GradeQuestionMapper, G
     @Transactional(rollbackFor = Exception.class)
     public Integer deleteBathById(List<String> list){
         try {
-            for (String str : list) {
-                GradeQuestion gradeQuestion = new GradeQuestion();
-                gradeQuestion.setId(str);
-                baseMapper.deleteById(str);
-            }
+            baseMapper.deleteBatchIds(list);
         }catch(Exception e){
             return 0;
         }

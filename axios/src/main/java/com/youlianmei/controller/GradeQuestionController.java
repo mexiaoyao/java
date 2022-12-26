@@ -4,6 +4,7 @@ import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.youlianmei.dao.GradeQuestionDao;
 import com.youlianmei.dao.GradeQuestionImportDao;
+import com.youlianmei.dao.ListDao;
 import com.youlianmei.model.GradeQuestion;
 import com.youlianmei.service.GradeQuestionService;
 import com.youlianmei.utils.DateUtils;
@@ -68,13 +69,14 @@ public class GradeQuestionController {
      * 删除
      * **/
     @PostMapping("delete")
-    public Object delete(@RequestBody List<String> list) throws Exception {
+    public Object delete(@RequestBody ListDao listDao) throws Exception {
         Map<String,Object> obj = new HashMap<>();
-        if(null==list || list.size()==0){
+        if(null==listDao.getStringList() || listDao.getStringList().size()==0){
             obj.put("code", 20000);
+            obj.put("msg", "参数为空");
             return obj;
         }
-        Integer result = gradeQuestionService.deleteBathById(list);
+        Integer result = gradeQuestionService.deleteBathById(listDao.getStringList());
         obj.put("code", result == 1 ? 10000 : 20000);
         return obj;
     }
