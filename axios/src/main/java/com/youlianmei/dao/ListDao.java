@@ -1,6 +1,5 @@
 package com.youlianmei.dao;
 
-import com.youlianmei.model.GradeDict;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

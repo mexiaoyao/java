@@ -48,6 +48,7 @@ public class GradeQuestionServiceImpl extends ServiceImpl<GradeQuestionMapper, G
         //构建条件
         QueryWrapper<GradeQuestion> wrapper = new QueryWrapper<>();
         ListUtils.gradeQuestionWhere(wrapper, dao);
+        wrapper.orderByDesc("create_time");
         //多条件组合查询
         //调用mybatis plus分页方法进行查询
         return baseMapper.selectCount(wrapper);
