@@ -2,6 +2,8 @@ package com.youlianmei.utils;
 
 public class ConstantsUtils {
 
+    public static final Integer REDIS_OVER_TIME = 3600; //redis用户登录过时时间
+
     public static final Byte BYTE_1 = 1; //Byte类型1 一般表示成功
 
     public static final Byte BYTE_2 = 2; //Byte类型2 一般表示失败

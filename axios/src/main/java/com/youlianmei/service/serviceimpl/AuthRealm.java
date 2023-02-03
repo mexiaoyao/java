@@ -51,7 +51,7 @@ public class AuthRealm extends AuthorizingRealm {
         //此方法需要一个AuthorizationInfo类型的返回值，因此返回一个它的实现类SimpleAuthorizationInfo
         //通过SimpleAuthorizationInfo里的addStringPermission()设置用户的权限
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-        simpleAuthorizationInfo.addStringPermission(user.getRole());
+        simpleAuthorizationInfo.addStringPermission(user.getRoles());
         return simpleAuthorizationInfo;
     }
 }

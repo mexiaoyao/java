@@ -18,7 +18,7 @@ public class Msg {
     //无权访问
     public static Msg denyAccess(String message){
         Msg result=new Msg();
-        result.setCode(300);
+        result.setCode(30000);
         result.setMessage(message);
         return result;
     }
@@ -26,7 +26,7 @@ public class Msg {
     //操作成功
     public static Msg success(String message){
         Msg result=new Msg();
-        result.setCode(200);
+        result.setCode(10000);
         result.setMessage(message);
         return result;
     }
@@ -34,7 +34,7 @@ public class Msg {
     //客户端操作失败
     public static Msg fail(String message){
         Msg result=new Msg();
-        result.setCode(400);
+        result.setCode(40000);
         result.setMessage(message);
         return result;
     }

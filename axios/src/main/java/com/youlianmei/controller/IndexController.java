@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.youlianmei.model.User;
 import com.youlianmei.service.UserService;
 import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +23,10 @@ public class IndexController {
     @Resource
     UserService userService;
 
+    //需要权限ROLE_ADMIN才能访问hello
+    @RequiresPermissions("ROLE_IndexCode")
     @GetMapping("indexCode")
-    public String code(HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+    public String indexCode(HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
         return "123";
     }
 
