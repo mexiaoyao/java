@@ -64,6 +64,10 @@ public class LoginController {
             return Msg.fail("密码不可为空");
         }
 
+        //判断是否登录
+        //https://www.dandelioncloud.cn/article/details/1514775782571458562
+        subject.isAuthenticated();
+
         //shiro验证
         Subject subject= SecurityUtils.getSubject();
         //根据用户名密码生成一个令牌

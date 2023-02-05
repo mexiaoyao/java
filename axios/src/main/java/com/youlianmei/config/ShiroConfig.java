@@ -30,7 +30,8 @@ public class ShiroConfig {
         filterMap.put("/login", "anon");
         filterMap.put("/logout", "anon");
         filterMap.put("/ces01", "anon");
-        filterMap.put("/**","authc");
+        //filterMap.put("/**","authc");
+        filterMap.put("/**", "corsAuthenticationFilter");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         //未登录页面跳转
@@ -41,6 +42,8 @@ public class ShiroConfig {
         //自定义过滤器
         Map<String, Filter> corsfilterMap = new LinkedHashMap<>();
         corsfilterMap.put("corsAuthenticationFilter", new CORSAuthenticationFilter());
+        shiroFilterFactoryBean.setFilters(corsfilterMap);
+        log.info("---shiroFilterFactoryBean--");
         return shiroFilterFactoryBean;
     }
 

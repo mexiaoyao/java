@@ -1,5 +1,7 @@
 package com.youlianmei.filter;
 
+import com.alibaba.fastjson.JSON;
+import com.youlianmei.msg.Msg;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.slf4j.Logger;
@@ -37,11 +39,13 @@ public class CORSAuthenticationFilter extends FormAuthenticationFilter {
         res.setHeader("Access-Control-Allow-Origin", "*");
         res.setStatus(HttpServletResponse.SC_OK);
         res.setCharacterEncoding("UTF-8");
-        PrintWriter writer = res.getWriter();
-        Map<String, Object> map= new HashMap<>();
-        map.put("code", 702);
-        map.put("msg", "未登录");
-        writer.write("JSON.toJSONString(map)");
-        writer.close(); return false;
+//        PrintWriter writer = res.getWriter();
+//        Map<String, Object> map= new HashMap<>();
+//        map.put("code", 702);
+//        map.put("msg", "未登录");
+//        writer.write(JSON.toJSONString(map));
+//        writer.close();
+        Msg.noLogin("index");
+        return false;
     }
 }

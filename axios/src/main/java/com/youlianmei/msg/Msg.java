@@ -15,18 +15,26 @@ public class Msg {
     String Message; //消息提示
     Map<String,Object> data=new HashMap<String,Object>();   //数据
 
-    //无权访问
-    public static Msg denyAccess(String message){
+    //成功
+    public static Msg success(String message){
         Msg result=new Msg();
-        result.setCode(30000);
+        result.setCode(10000);
         result.setMessage(message);
         return result;
     }
 
-    //操作成功
-    public static Msg success(String message){
+    //未登录
+    public static Msg noLogin(String message){
         Msg result=new Msg();
-        result.setCode(10000);
+        result.setCode(20000);
+        result.setMessage(message);
+        return result;
+    }
+
+    //无权访问
+    public static Msg denyAccess(String message){
+        Msg result=new Msg();
+        result.setCode(30000);
         result.setMessage(message);
         return result;
     }
